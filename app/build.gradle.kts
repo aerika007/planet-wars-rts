@@ -45,8 +45,11 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+
     // Additional Libraries
     implementation("com.google.guava:guava:32.1.2-jre")
+
+    implementation("org.slf4j:slf4j-simple:1.7.36")
 }
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
