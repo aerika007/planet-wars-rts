@@ -2,9 +2,10 @@ package competition_entry
 
 import games.planetwars.agents.random.CarefulRandomAgent
 import games.planetwars.agents.random.DynamicRHEAAgent
+import games.planetwars.agents.random.SmarterAgent
 import json_rmi.GameAgentServer
 
 fun main() {
-    val server = GameAgentServer(port = 8080, agentClass = DynamicRHEAAgent::class)
+    val server = GameAgentServer(port = 8080, agentClass = SmarterAgent::class)
     server.start(wait = true)
 }
