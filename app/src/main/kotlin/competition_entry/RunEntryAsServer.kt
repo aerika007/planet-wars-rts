@@ -6,6 +6,6 @@ import games.planetwars.agents.random.SmarterAgent
 import json_rmi.GameAgentServer
 
 fun main() {
-    val server = GameAgentServer(port = 8080, agentClass = SmarterAgent::class)
+    val server = GameAgentServer(port = 8080, agentClass = DynamicRHEAAgent::class)
     server.start(wait = true)
 }
