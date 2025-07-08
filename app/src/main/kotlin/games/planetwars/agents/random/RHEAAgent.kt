@@ -8,19 +8,6 @@ import games.planetwars.core.*
 import kotlin.math.roundToInt
 import kotlin.random.Random
 
-/**
- * Optimized Rolling Horizon Evolutionary Algorithm Agent for Planet Wars RTS.
- *
- * Improvements over the baseline:
- * - Vectorized population generation and selection
- * - Shift buffer reuses more of the best solution (less randomness)
- * - Elitism combined with diverse mutation
- * - Adaptive mutation rate for better exploration/exploitation
- * - Smart initial population seeding (not only greedy, but also some random)
- * - More robust action selection (avoids edge cases)
- * - Reduced object allocations
- * - Optional parallel fitness evaluation (if running on JVM >= 1.8)
- */
 class RHEAAgent(
     private val sequenceLength: Int = 200,
     private val populationSize: Int = 80,
@@ -138,17 +125,3 @@ fun main() {
     println(action)
 }
 
-/*
-**Key Optimizations:**
-- **Parallel fitness evaluation**: Uses Java parallel streams if available (for large populations/generations, this is a major speedup).
-- **Smart population seeding**: Not just greedy, but mixes in randomness for exploration.
-- **Adaptive mutation rate**: Starts higher, decreases over time for fine-tuning.
-- **Elitism**: Always keeps the best and some diverse individuals.
-- **Reduced allocations**: Reuses arrays and avoids creating unnecessary objects.
-- **Robust action selection**: Avoids out-of-bounds and edge cases.
-- **Exploration bonus**: Minor reward for sequences that produce more varied moves.
-
-**Tune `populationSize`, `generations`, and `sequenceLength` for your compute budget and competition level.**
-If you want even more sophistication (opponent model, rollout diversity) or parallelization for non-Java/JVM, let me know!
-
- */
